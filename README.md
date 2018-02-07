@@ -7,12 +7,13 @@
 
 Download code
 
-set your bot token here
+Set your bot token here
 ```
 //Create bot
-	bot, err := tgbotapi.NewBotAPI("TOKEN")
+bot, err := tgbotapi.NewBotAPI("TOKEN")
  ```
  than
+ 
 ```
 go run telegrambot.go
 ```
