@@ -3,7 +3,7 @@
  This is a Telegram bot which receives information from user which he want found in Wikipedia and return information which he found in Wikipedia.
 
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
-# Start bot
+# Getting Started
 
 Download code
 
