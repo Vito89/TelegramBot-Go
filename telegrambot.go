@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/Syfaro/telegram-bot-api"
-	"log"
 	"reflect"
 )
 
@@ -11,7 +10,7 @@ func telegramBot() {
 	//Create bot
 	bot, err := tgbotapi.NewBotAPI("TOKEN")
 	if err != nil {
-		log.Panic(err)
+		panic(err)
 	}
 
 	//Set update timeout
