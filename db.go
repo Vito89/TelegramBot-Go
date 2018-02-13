@@ -7,7 +7,7 @@ import (
 )
 
 func collectData(username string, chatid int64, message string, answer []string) {
-	//CREATE TABLE users(USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);
+	//CREATE TABLE users(ID SERIAL PRIMARY KEY, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);
 
 	//Connecting to database
 	db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)

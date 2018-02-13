@@ -38,7 +38,7 @@ func telegramBot() {
 			message := wikipediaAPI(request)
 
 			//Putting username, chat_id, message, answer to database
-			collectData(update.Message.Chat.UserName, update.Message.Chat.ID, ms, message)
+			collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message)
 
 			//Loop throug message slice
 			for _, val := range message {
