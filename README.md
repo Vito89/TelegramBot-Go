@@ -12,10 +12,14 @@ Set your bot token here
 //Create bot
 bot, err := tgbotapi.NewBotAPI("TOKEN")
  ```
- than
+Set database credential
+```
+db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)
+```
+Than
  
 ```
-go run telegrambot.go
+go build
 ```
 
 # License
