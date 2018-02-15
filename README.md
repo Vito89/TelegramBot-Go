@@ -16,10 +16,20 @@ Set database credential
 ```
 db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)
 ```
-Than
+Than move to code folder and run:
  
 ```
 go build
+```
+### Docker Image
+
+If you want to create docker image with application inside move to code folder and run:
+```
+GOOS=linux GOARCH=amd64 go build
+```
+Than move to TelegramBot-Go folder and run:
+```
+docker build -t image_name -f Dockerfile .
 ```
 
 # License
