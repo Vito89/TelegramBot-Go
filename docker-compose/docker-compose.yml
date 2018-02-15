@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+
+  db:
+    build: ./database
+    environment:
+      POSTGRES_PASSWORD: wikitelegrambot
+
+  bot:
+    build: ./bot
