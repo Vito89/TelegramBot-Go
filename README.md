@@ -5,7 +5,7 @@
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
 # Getting Started
 
-## Creating executable file
+### Creating executable file
 
 Set your bot token in telegrambot.go:
 ```
@@ -21,7 +21,7 @@ Than move to /docker-compose/bot/code folder and run:
 ```
 go build
 ```
-## Docker Image
+### Docker Image
 Set your bot token in telegrambot.go:
 ```
 //Create bot
@@ -39,7 +39,7 @@ Than move to /docker-compose/bot folder and run:
 ```
 docker build -t image_name -f Dockerfile .
 ```
-## Docker-Compose
+### Docker-Compose
 Set your bot token in telegrambot.go:
 ```
 //Create bot
