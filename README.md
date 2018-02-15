@@ -5,31 +5,53 @@
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
 # Getting Started
 
-Download code
+## Creating executable file
 
-Set your bot token here
+Set your bot token in telegrambot.go:
 ```
 //Create bot
 bot, err := tgbotapi.NewBotAPI("TOKEN")
  ```
-Set database credential
+Set database credential in db.go:
 ```
 db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)
 ```
-Than move to code folder and run:
+Than move to /docker-compose/bot/code folder and run:
  
 ```
 go build
 ```
-### Docker Image
-
-If you want to create docker image with application inside move to code folder and run:
+## Docker Image
+Set your bot token in telegrambot.go:
+```
+//Create bot
+bot, err := tgbotapi.NewBotAPI("TOKEN")
+ ```
+Set database credential in db.go:
+```
+db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)
+```
+Move to /docker-compose/bot/code folder and run:
 ```
 GOOS=linux GOARCH=amd64 go build
 ```
-Than move to TelegramBot-Go folder and run:
+Than move to /docker-compose/bot folder and run:
 ```
 docker build -t image_name -f Dockerfile .
+```
+## Docker-Compose
+Set your bot token in telegrambot.go:
+```
+//Create bot
+bot, err := tgbotapi.NewBotAPI("TOKEN")
+ ```
+ Set this credential in db.go:
+```
+db, err := sql.Open("postgres", `host=db port=5432 user=postgres password=wikitelegrambot dbname=postgres sslmode=disable`)
+```
+Than move to /docker-compose folder and run:
+```
+docker-compose up
 ```
 
 # License
