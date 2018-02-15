@@ -1,6 +1,6 @@
 FROM alpine
-COPY TelegramBot-Go .
+COPY /code/code /
 RUN apk add --no-cache ca-certificates &&\
-    chmod +x TelegramBot-Go
+    chmod +x code
 EXPOSE 80/tcp
-CMD [ "./TelegramBot-Go" ]
+CMD [ "./code" ]

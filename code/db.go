@@ -23,7 +23,7 @@ func collectData(username string, chatid int64, message string, answer []string)
 	data := `INSERT INTO users(username, chat_id, message, answer) VALUES($1, $2, $3, $4);`
 
 	//Execute SQL command in database
-	if _, err = db.Exec(data, username, chatid, message, answ); err != nil {
+	if _, err = db.Exec(data, `@`+username, chatid, message, answ); err != nil {
 		panic(err)
 	}
 }
