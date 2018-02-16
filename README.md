@@ -49,6 +49,10 @@ bot, err := tgbotapi.NewBotAPI("TOKEN")
 ```
 db, err := sql.Open("postgres", `host=db port=5432 user=postgres password=wikitelegrambot dbname=postgres sslmode=disable`)
 ```
+Move to /docker-compose/bot/code folder and run:
+```
+GOOS=linux GOARCH=amd64 go build
+```
 Than move to /docker-compose folder and run:
 ```
 docker-compose up
