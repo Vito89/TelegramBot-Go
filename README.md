@@ -5,6 +5,18 @@
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
 # Getting Started
 
+### Database
+If you dont want to use database, remove db.go from /docker-compose/bot/code folder and this lines from telegrambot.go:
+```
+//Putting username, chat_id, message, answer to database
+if err := collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message); err != true {
+//Send message
+msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database error, but bot still working")
+bot.Send(msg)
+}
+```
+And if you not use database, you dont need to setup up database credential in next step except docker-compose.
+
 ### Creating executable file
 
 Set your bot token in telegrambot.go:
