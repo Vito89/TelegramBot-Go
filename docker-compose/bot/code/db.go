@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-func collectData(username string, chatid int64, message string, answer []string) {
+func collectData(username string, chatid int64, message string, answer []string) bool {
 	//CREATE TABLE users(ID SERIAL PRIMARY KEY, TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);
 
 	//Connecting to database
 	db, err := sql.Open("postgres", `host= database host port= databse port user= username password= password dbname= database name sslmode= enable or disable(default disable)`)
 	if err != nil {
-		panic(err)
+		return false
 	}
 	defer db.Close()
 
@@ -24,6 +24,8 @@ func collectData(username string, chatid int64, message string, answer []string)
 
 	//Execute SQL command in database
 	if _, err = db.Exec(data, `@`+username, chatid, message, answ); err != nil {
-		panic(err)
+		return false
 	}
+
+	return true
 }

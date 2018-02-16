@@ -38,7 +38,11 @@ func telegramBot() {
 			message := wikipediaAPI(request)
 
 			//Putting username, chat_id, message, answer to database
-			collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message)
+			if err := collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message); err != true {
+				//Send message
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database error, but bot still working")
+				bot.Send(msg)
+			}
 
 			//Loop throug message slice
 			for _, val := range message {
