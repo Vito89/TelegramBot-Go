@@ -2,13 +2,14 @@ package main
 
 import (
 	"github.com/Syfaro/telegram-bot-api"
+	"os"
 	"reflect"
 )
 
 func telegramBot() {
 
 	//Create bot
-	bot, err := tgbotapi.NewBotAPI("TOKEN")
+	bot, err := tgbotapi.NewBotAPI(os.Getenv("TOKEN"))
 	if err != nil {
 		panic(err)
 	}

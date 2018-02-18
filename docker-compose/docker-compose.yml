@@ -5,7 +5,15 @@ services:
   db:
     build: ./database
     environment:
-      POSTGRES_PASSWORD: wikitelegrambot
+      POSTGRES_PASSWORD: test
 
   bot:
-    build: ./bot
+    image: trigun117/wikipedia-telegram-bot
+    environment:
+      TOKEN: 
+      HOST: db
+      PORT: 5432
+      USER: 
+      PASSWORD: 
+      DBNAME: 
+      SSLMODE: 
