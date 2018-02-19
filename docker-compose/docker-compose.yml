@@ -10,6 +10,7 @@ services:
   bot:
     image: trigun117/wikipedia-telegram-bot
     environment:
+      DB_SWITCH: on
       TOKEN: 
       HOST: db
       PORT: 5432

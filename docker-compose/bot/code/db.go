@@ -9,6 +9,7 @@ import (
 )
 
 func collectData(username string, chatid int64, message string, answer []string) bool {
+
 	//CREATE TABLE users(ID SERIAL PRIMARY KEY, TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
@@ -18,6 +19,7 @@ func collectData(username string, chatid int64, message string, answer []string)
 	sslmode := os.Getenv("SSLMODE")
 
 	dbInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
+
 	//Connecting to database
 	db, err := sql.Open("postgres", dbInfo)
 	if err != nil {

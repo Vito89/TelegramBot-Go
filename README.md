@@ -6,13 +6,27 @@
 # Getting Started
 
 ### Docker
-
-Run run:
+#### Language
+You can specify language
 ```
-docker run -e TOKEN=set_your_bot_token -e HOST=set_your_database_host -e PORT=set_your_database_port -e USER=set_your_database_user -e PASSWORD=set_your_database_password -e DBNAME=set_your_database_name -e SSLMODE=set_your_database_sslmode(disable or enable, default disable) -d trigun117/wikipedia-telegram-bot
+-e LANGUAGE=search_language
+Examples: 
+Russian: docker run -e LANGUAGE=ru -e TOKEN=set_your_bot_token -d trigun117/wikipedia-telegram-bot
+France: docker run -e LANGUAGE=fr -e TOKEN=set_your_bot_token -d trigun117/wikipedia-telegram-bot
+```
+Default is English
+
+#### Image
+If you dont want to use databse run:
+```
+docker run -e TOKEN=set_your_bot_token -d trigun117/wikipedia-telegram-bot
+```
+If you want to use database run:
+```
+docker run -e DB_SWITCH=on -e TOKEN=set_your_bot_token -e HOST=set_your_database_host -e PORT=set_your_database_port -e USER=set_your_database_user -e PASSWORD=set_your_database_password -e DBNAME=set_your_database_name -e SSLMODE=set_your_database_sslmode(disable or enable, default disable) -d trigun117/wikipedia-telegram-bot
 ```
 ### Docker-Compose
-Set environment variables
+Set environment variables in docker-compose.yml
 ```
 services:
 
@@ -24,6 +38,7 @@ services:
   bot:
     image: trigun117/wikipedia-telegram-bot
     environment:
+      DB_SWITCH: on
       TOKEN: set_your_bot_token
       HOST: db
       PORT: 5432

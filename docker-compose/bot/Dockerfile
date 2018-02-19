@@ -1,4 +1,5 @@
 FROM alpine
+ENV LANGUAGE="en"
 COPY /code/code .
 RUN apk add --no-cache ca-certificates &&\
     chmod +x code
