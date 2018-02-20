@@ -50,7 +50,7 @@ services:
 ```
 Than move to /docker-compose folder and run:
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 # License
