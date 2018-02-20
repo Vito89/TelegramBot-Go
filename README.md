@@ -32,15 +32,15 @@ Set environment variables in docker-compose.yml
 services:
 
   db:
-    build: ./database
+    image: postgres
     environment:
       POSTGRES_PASSWORD: test
 
   bot:
     image: trigun117/wikipedia-telegram-bot
     environment:
-      DB_SWITCH: on
-      TOKEN: set_your_bot_token
+      DB_SWITCH: "on"
+      TOKEN: 
       HOST: db
       PORT: 5432
       USER: postgres
