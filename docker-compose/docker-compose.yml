@@ -3,18 +3,18 @@ version: '3.5'
 services:
 
   db:
-    build: ./database
+    image: postgres
     environment:
       POSTGRES_PASSWORD: test
 
   bot:
     image: trigun117/wikipedia-telegram-bot
     environment:
-      DB_SWITCH: on
+      DB_SWITCH: "on"
       TOKEN: 
       HOST: db
       PORT: 5432
-      USER: 
-      PASSWORD: 
-      DBNAME: 
-      SSLMODE: 
+      USER: postgres
+      PASSWORD: test
+      DBNAME: postgres
+      SSLMODE: disable

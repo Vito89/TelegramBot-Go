@@ -4,6 +4,7 @@ import (
 	"github.com/Syfaro/telegram-bot-api"
 	"os"
 	"reflect"
+	"time"
 )
 
 func telegramBot() {
@@ -69,6 +70,15 @@ func telegramBot() {
 }
 
 func main() {
+
+	time.Sleep(15 * time.Second)
+
+	//Createing Table
+	if os.Getenv("DB_SWITCH") == "on" {
+		if err := createTable(); err != true {
+			panic(err)
+		}
+	}
 
 	//Call Bot
 	telegramBot()

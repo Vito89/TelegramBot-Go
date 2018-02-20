@@ -8,17 +8,16 @@ import (
 	"strings"
 )
 
+var host = os.Getenv("HOST")
+var port = os.Getenv("PORT")
+var user = os.Getenv("USER")
+var password = os.Getenv("PASSWORD")
+var dbname = os.Getenv("DBNAME")
+var sslmode = os.Getenv("SSLMODE")
+
+var dbInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
+
 func collectData(username string, chatid int64, message string, answer []string) bool {
-
-	//CREATE TABLE users(ID SERIAL PRIMARY KEY, TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);
-	host := os.Getenv("HOST")
-	port := os.Getenv("PORT")
-	user := os.Getenv("USER")
-	password := os.Getenv("PASSWORD")
-	dbname := os.Getenv("DBNAME")
-	sslmode := os.Getenv("SSLMODE")
-
-	dbInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
 
 	//Connecting to database
 	db, err := sql.Open("postgres", dbInfo)
@@ -35,6 +34,23 @@ func collectData(username string, chatid int64, message string, answer []string)
 
 	//Execute SQL command in database
 	if _, err = db.Exec(data, `@`+username, chatid, message, answ); err != nil {
+		return false
+	}
+
+	return true
+}
+
+func createTable() bool {
+
+	//Connecting to database
+	db, err := sql.Open("postgres", dbInfo)
+	if err != nil {
+		return false
+	}
+	defer db.Close()
+
+	//Creating users Table
+	if _, err = db.Exec(`CREATE TABLE users(ID SERIAL PRIMARY KEY, TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);`); err != nil {
 		return false
 	}
 
