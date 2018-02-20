@@ -40,7 +40,7 @@ services:
     image: trigun117/wikipedia-telegram-bot
     environment:
       DB_SWITCH: "on"
-      TOKEN: 
+      TOKEN: set_your_bot_token
       HOST: db
       PORT: 5432
       USER: postgres
