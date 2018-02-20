@@ -73,7 +73,7 @@ func main() {
 
 	time.Sleep(15 * time.Second)
 
-	//Createing Table
+	//Creating Table
 	if os.Getenv("DB_SWITCH") == "on" {
 		if err := createTable(); err != true {
 			panic(err)
