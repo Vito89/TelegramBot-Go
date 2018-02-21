@@ -24,7 +24,16 @@ docker run -e TOKEN=set_your_bot_token -d trigun117/wikipedia-telegram-bot
 ```
 If you want to use database run:
 ```
-docker run -e DB_SWITCH=on -e TOKEN=set_your_bot_token -e HOST=set_your_database_host -e PORT=set_your_database_port -e USER=set_your_database_user -e PASSWORD=set_your_database_password -e DBNAME=set_your_database_name -e SSLMODE=set_your_database_sslmode(disable or enable, default disable) -d trigun117/wikipedia-telegram-bot
+docker run \
+-e DB_SWITCH=on \
+-e TOKEN=set_your_bot_token \
+-e HOST=set_your_database_host \
+-e PORT=set_your_database_port \
+-e USER=set_your_database_user \
+-e PASSWORD=set_your_database_password \
+-e DBNAME=set_your_database_name \
+-e SSLMODE=set_your_database_sslmode(disable or enable, default disable) \
+-d trigun117/wikipedia-telegram-bot
 ```
 ### Docker-Compose
 Set environment variables in docker-compose.yml
