@@ -4,6 +4,11 @@
 
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
 # Getting Started
+### Telegram
+If you want to use /number_of_users oyur need to connect bot to database and add this command to your bot using BotFather: **number_of_users - number of users who used bot**
+
+/number_of_users command sending message to user which contain number of users who used bot
+
 ### Docker Hub
 https://hub.docker.com/r/trigun117/wikipedia-telegram-bot/
 ### Docker

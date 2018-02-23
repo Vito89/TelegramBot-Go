@@ -17,6 +17,7 @@ var sslmode = os.Getenv("SSLMODE")
 
 var dbInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
 
+//Collecting data from bot
 func collectData(username string, chatid int64, message string, answer []string) bool {
 
 	//Connecting to database
@@ -40,6 +41,7 @@ func collectData(username string, chatid int64, message string, answer []string)
 	return true
 }
 
+//Creating users table in database
 func createTable() bool {
 
 	//Connecting to database
@@ -55,4 +57,26 @@ func createTable() bool {
 	}
 
 	return true
+}
+
+//Getting number of users who using bot
+func getNumberOfUsers() (int64, bool) {
+
+	var count int64
+
+	//Connecting to database
+	db, err := sql.Open("postgres", dbInfo)
+	if err != nil {
+		return 0, false
+	}
+	defer db.Close()
+
+	//Counting number of users
+	row := db.QueryRow("SELECT COUNT(DISTINCT username) FROM users;")
+	err = row.Scan(&count)
+	if err != nil {
+		return 0, false
+	}
+
+	return count, true
 }
