@@ -1,0 +1,6 @@
+language: go
+go:
+  - tip
+before_installl:
+  - go get github.com/lib/pq
+  - go get github.com/Syfaro/telegram-bot-api
