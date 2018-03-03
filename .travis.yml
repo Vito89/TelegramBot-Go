@@ -19,7 +19,7 @@ before_install:
 
 script:
   - cd docker-compose/bot/code
-  - go build
+  - CGO_ENABLED=0 go build
   - cd ..
   - docker build --rm -t trigun117/wikipedia-telegram-bot .
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
