@@ -1,6 +1,27 @@
+sudo: required
+
 language: go
+
 go:
-  - tip
-before_installl:
+  - "1.10"
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
   - go get github.com/lib/pq
   - go get github.com/Syfaro/telegram-bot-api
+
+script:
+  - cd docker-compose/bot/code
+  - go build
+  - cd ..
+  - docker build --rm -t trigun117/wikipedia-telegram-bot .
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker push trigun117/wikipedia-telegram-bot
+  - docker-compose up --build -d
