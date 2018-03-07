@@ -60,7 +60,7 @@ func telegramBot() {
 				} else {
 
 					//Send message
-					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database not connected, so i cant say you how manu peoples used me.")
+					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database not connected, so i can't say you how many peoples used me.")
 					bot.Send(msg)
 				}
 			default:
