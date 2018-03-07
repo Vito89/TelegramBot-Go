@@ -5,6 +5,26 @@
 
 ![example work of bot](https://github.com/trigun117/TelegramBot-Go/blob/master/example.jpg)
 # Getting Started
+### Available environment variable:
+TOKEN
+
+DB_SWITCH
+
+LANGUAGE
+
+CREATE_TABLE
+
+HOST
+
+PORT
+
+USER
+
+PASSWORD
+
+DBNAME
+
+SSLMODE
 ### Telegram
 If you want to use /number_of_users command your need to connect bot to database and add this command to your bot using BotFather: **number_of_users - number of users who used bot**
 
