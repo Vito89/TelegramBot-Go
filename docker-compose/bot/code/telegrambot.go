@@ -110,14 +110,9 @@ func main() {
 	time.Sleep(1 * time.Minute)
 
 	//Creating Table
-	if os.Getenv("CREATE_TABLE") == "yes" {
-
-		if os.Getenv("DB_SWITCH") == "on" {
-
-			if err := createTable(); err != true {
-
-				panic(err)
-			}
+	if os.Getenv("DB_SWITCH") == "on" {
+		if err := createTable(); err != true {
+			panic(err)
 		}
 	}
 
