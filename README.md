@@ -61,6 +61,10 @@ docker run \
 -e SSLMODE=set_your_database_sslmode(disable or enable, default disable) \
 -d trigun117/wikipedia-telegram-bot
 ```
+if you need to create table add 
+```
+-e CREATE_TABLE=yes
+```
 ### Docker-Compose
 Set environment variables in docker-compose.yml
 ```
