@@ -78,6 +78,7 @@ services:
   bot:
     image: trigun117/wikipedia-telegram-bot
     environment:
+      CREATE_TABLE: "yes"
       DB_SWITCH: "on"
       TOKEN: set_your_bot_token
       HOST: db
