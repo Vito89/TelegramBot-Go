@@ -18,12 +18,12 @@ var sslmode = os.Getenv("SSLMODE")
 var dbInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
 
 //Collecting data from bot
-func collectData(username string, chatid int64, message string, answer []string) bool {
+func collectData(username string, chatid int64, message string, answer []string) error {
 
 	//Connecting to database
 	db, err := sql.Open("postgres", dbInfo)
 	if err != nil {
-		return false
+		return err
 	}
 	defer db.Close()
 
@@ -35,39 +35,39 @@ func collectData(username string, chatid int64, message string, answer []string)
 
 	//Execute SQL command in database
 	if _, err = db.Exec(data, `@`+username, chatid, message, answ); err != nil {
-		return false
+		return err
 	}
 
-	return true
+	return nil
 }
 
 //Creating users table in database
-func createTable() bool {
+func createTable() error {
 
 	//Connecting to database
 	db, err := sql.Open("postgres", dbInfo)
 	if err != nil {
-		return false
+		return err
 	}
 	defer db.Close()
 
 	//Creating users Table
 	if _, err = db.Exec(`CREATE TABLE users(ID SERIAL PRIMARY KEY, TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP, USERNAME TEXT, CHAT_ID INT, MESSAGE TEXT, ANSWER TEXT);`); err != nil {
-		return false
+		return err
 	}
 
-	return true
+	return nil
 }
 
 //Getting number of users who using bot
-func getNumberOfUsers() (int64, bool) {
+func getNumberOfUsers() (int64, error) {
 
 	var count int64
 
 	//Connecting to database
 	db, err := sql.Open("postgres", dbInfo)
 	if err != nil {
-		return 0, false
+		return 0, err
 	}
 	defer db.Close()
 
@@ -75,8 +75,8 @@ func getNumberOfUsers() (int64, bool) {
 	row := db.QueryRow("SELECT COUNT(DISTINCT username) FROM users;")
 	err = row.Scan(&count)
 	if err != nil {
-		return 0, false
+		return 0, err
 	}
 
-	return count, true
+	return count, nil
 }

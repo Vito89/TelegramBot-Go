@@ -44,7 +44,7 @@ func telegramBot() {
 
 					//Assigning number of users to num variable
 					num, err := getNumberOfUsers()
-					if err != true {
+					if err != nil {
 
 						//Send message
 						msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database error.")
@@ -80,7 +80,7 @@ func telegramBot() {
 				if os.Getenv("DB_SWITCH") == "on" {
 
 					//Putting username, chat_id, message, answer to database
-					if err := collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message); err != true {
+					if err := collectData(update.Message.Chat.UserName, update.Message.Chat.ID, update.Message.Text, message); err != nil {
 
 						//Send message
 						msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Database error, but bot still working.")
@@ -114,7 +114,7 @@ func main() {
 
 		if os.Getenv("DB_SWITCH") == "on" {
 
-			if err := createTable(); err != true {
+			if err := createTable(); err != nil {
 
 				panic(err)
 			}
