@@ -42,7 +42,7 @@ func wikipediaAPI(request string) (answer []string) {
 
 	//Sending request
 	if response, err := http.Get(request); err != nil {
-		log.Fatal(err)
+		s[0] = "Wikipedia is not respond"
 	} else {
 		defer response.Body.Close()
 
