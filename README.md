@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/trigun117/TelegramBot-Go.svg?branch=master)](https://travis-ci.org/trigun117/TelegramBot-Go)
+[![Build Status](https://travis-ci.org/trigun117/TelegramBot-Go.svg?branch=master)](https://travis-ci.org/trigun117/TelegramBot-Go) [![codecov](https://codecov.io/gh/trigun117/TelegramBot-Go/branch/master/graph/badge.svg)](https://codecov.io/gh/trigun117/TelegramBot-Go) [![Go Report Card](https://goreportcard.com/badge/github.com/trigun117/TelegramBot-Go)](https://goreportcard.com/report/github.com/trigun117/TelegramBot-Go)
 # TelegramBot-Go
 
  This is a Telegram bot which receives information from user which he want found in Wikipedia and return information which he found in Wikipedia.

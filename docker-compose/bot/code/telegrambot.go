@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/Syfaro/telegram-bot-api"
+	"github.com/trigun117/TelegramBot-Go/docker-compose/bot/code/wiki"
 	"os"
 	"reflect"
 	"time"
@@ -21,7 +22,7 @@ func telegramBot() {
 	u.Timeout = 60
 
 	//Get updates from bot
-	updates, err := bot.GetUpdatesChan(u)
+	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
 		if update.Message == nil {
@@ -69,13 +70,13 @@ func telegramBot() {
 				language := os.Getenv("LANGUAGE")
 
 				//Create search url
-				ms, _ := urlEncoded(update.Message.Text)
+				ms, _ := wiki.UrlEncoded(update.Message.Text)
 
 				url := ms
 				request := "https://" + language + ".wikipedia.org/w/api.php?action=opensearch&search=" + url + "&limit=3&origin=*&format=json"
 
 				//assigning value of answer slice to variable message
-				message := wikipediaAPI(request)
+				message := wiki.WikipediaAPI(request)
 
 				if os.Getenv("DB_SWITCH") == "on" {
 

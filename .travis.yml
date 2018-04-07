@@ -14,10 +14,10 @@ before_install:
   - sudo rm /usr/local/bin/docker-compose
   - sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
-  - go get github.com/lib/pq
-  - go get github.com/Syfaro/telegram-bot-api
 
 script:
+  - chmod +x test.sh
+  - ./test.sh
   - cd docker-compose/bot/code
   - CGO_ENABLED=0 go build
   - cd ..
@@ -25,3 +25,6 @@ script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker push trigun117/wikipedia-telegram-bot
   - docker-compose up --build -d
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

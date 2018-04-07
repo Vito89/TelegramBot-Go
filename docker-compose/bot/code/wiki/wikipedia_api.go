@@ -1,9 +1,8 @@
-package main
+package wiki
 
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -36,7 +35,7 @@ func (sr *SearchResults) UnmarshalJSON(bs []byte) error {
 	return nil
 }
 
-func wikipediaAPI(request string) (answer []string) {
+func WikipediaAPI(request string) (answer []string) {
 
 	s := make([]string, 3)
 
@@ -47,10 +46,7 @@ func wikipediaAPI(request string) (answer []string) {
 		defer response.Body.Close()
 
 		//Reading answer
-		contents, err := ioutil.ReadAll(response.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
+		contents, _ := ioutil.ReadAll(response.Body)
 
 		//Unmarshal answer and set it to SearchResults struct
 		sr := &SearchResults{}
