@@ -10,7 +10,7 @@ func TestWikipedia_api(t *testing.T) {
 		t.Fail()
 	}
 
-	q, _ := UrlEncoded("325f547b68987098234c46:::::@#$%!@#@^%&&^*")
+	q, _ := URLEncoded("325f547b68987098234c46:::::@#$%!@#@^%&&^*")
 
 	request := "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + q + "&limit=3&origin=*&format=json"
 
@@ -18,7 +18,7 @@ func TestWikipedia_api(t *testing.T) {
 		t.Fail()
 	}
 
-	q1, _ := UrlEncoded("test")
+	q1, _ := URLEncoded("test")
 
 	request1 := "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + q1 + "&limit=3&origin=*&format=json"
 

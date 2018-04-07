@@ -70,7 +70,7 @@ func telegramBot() {
 				language := os.Getenv("LANGUAGE")
 
 				//Create search url
-				ms, _ := wiki.UrlEncoded(update.Message.Text)
+				ms, _ := wiki.URLEncoded(update.Message.Text)
 
 				url := ms
 				request := "https://" + language + ".wikipedia.org/w/api.php?action=opensearch&search=" + url + "&limit=3&origin=*&format=json"

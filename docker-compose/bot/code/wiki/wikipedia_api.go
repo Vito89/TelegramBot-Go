@@ -35,6 +35,7 @@ func (sr *SearchResults) UnmarshalJSON(bs []byte) error {
 	return nil
 }
 
+//WikipediaAPI communicate with wikipedia api
 func WikipediaAPI(request string) (answer []string) {
 
 	s := make([]string, 3)
